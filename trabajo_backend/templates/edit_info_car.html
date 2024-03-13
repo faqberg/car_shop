@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    {% load static %}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ejemplo de HTML</title>
+  <link rel="stylesheet" href="{% static 'style_model.css' %}">
+</head>
+<body>
+    <a href="/models"><h1>INDEX</h1></a>
+    <button onclick="window.location.href = '/edit_info';">Volver</button>
+  <div class="container">
+    <!-- Primera parte -->
+    <div class="section half-width">
+      <img src="{{car.photo}}" alt="Foto 1" class="image">
+    </div>
+    <div class="section half-width">
+      <div>
+        <h1>{{car.name}}</h1>
+        <h5>{{car.year}}</h5>
+        <h5 style="font-weight: lighter;">${{car.price}}</h5>
+      </div>
+      
+    </div>
+
+    
+    <!-- Segunda parte -->
+    
+    <!-- Tercera parte -->
+
+    <h1>Selecciona la info a editar/eliminar</h1>
+    
+  </div>
+
+
+
+  {% if num_car_infos == 0 %}
+
+  <div class="container">
+
+    
+    <div class="section half-width">
+      <div>
+        
+        <p>Este auto no tiene infos.</p>
+      </div>
+    </div>
+    
+  </div>
+
+  {% else %}
+
+  
+
+  {% for info in car_infos %}
+  <a href="../edit_inf/{{info.id}}" style="text-decoration: none;color: black;"><div class="container">
+
+  <div class="section half-width">
+    <img src="{{info.photo}}" alt="Foto 1" class="image">
+  </div>
+  <div class="section half-width">
+    <div>
+      <h2>{{info.title}}</h2>
+      <p>{{info.description}}</p>
+    </div>
+  </div>
+  
+</div></a>
+{% endfor %}
+
+{% endif %}
+  
+<button onclick="window.location.href = '/add_infos/{{car.name}}';">Agregar Infos</button>
+  
+</body>
+</html>

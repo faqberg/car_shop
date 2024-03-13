@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    {% load static %}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ejemplo de HTML</title>
+  <link rel="stylesheet" href="{% static 'style_model.css' %}">
+</head>
+<body>
+    <a href="/models"><h1>INDEX</h1></a>
+    <button onclick="window.location.href = '/edit_features';">Volver</button>
+  <div class="container">
+    <!-- Primera parte -->
+    <div class="section half-width">
+      <img src="{{car.photo}}" alt="Foto 1" class="image">
+    </div>
+    <div class="section half-width">
+      <div>
+        <h1>{{car.name}}</h1>
+        <h5>{{car.year}}</h5>
+        <h5 style="font-weight: lighter;">${{car.price}}</h5>
+      </div>
+      
+    </div>
+
+    
+    <!-- Segunda parte -->
+    <div class="section half-width">
+      <div class="gallery">
+        
+        {% for feature in car_features %}
+        
+        <div class="gallery-item" style="border: 1px solid black;padding: 5px;">
+            <a href="../edit_feature/{{feature.id}}" style="text-decoration: none;color: black;"> <img src="{{feature.photo}}" alt="Foto 2" style="width: 250px;"></a>
+                <a href="../edit_feature/{{feature.id}}" style="text-decoration: none;color: black;"><p style="font-size: 110%;font-weight: bolder;">{{feature.title}}</p></a>
+                    <a href="../edit_feature/{{feature.id}}" style="text-decoration: none;color: black;"> <p>{{feature.description}}</p></a>
+        </div>
+    
+        {% endfor %}
+        
+        
+      </div>
+    </div>
+    <!-- Tercera parte -->
+
+    <h1>Selecciona el feature a editar/eliminar</h1>
+    
+  </div>
+
+
+
+  {% if num_car_features == 0 %}
+
+  <div class="container">
+
+    
+    <div class="section half-width">
+      <div>
+        
+        <p>Este auto no tiene features.</p>
+      </div>
+    </div>
+    
+  </div>
+
+  
+
+  
+
+  
+
+{% endif %}
+  
+<button onclick="window.location.href = '/add_features/{{car.name}}';">Agregar Features</button>
+  
+</body>
+</html>

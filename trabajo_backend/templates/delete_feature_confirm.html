@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    {% load static %}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formulario de Auto</title>
+  <link rel="stylesheet" href="{% static 'style_edit_car.css' %}">
+</head>
+<body>
+    
+    
+  <div class="container" style="margin-top: 200px;">
+    <a href="/models"><h1>INDEX</h1></a>
+    <h2>Confirma que quiere borrar el feature de {{car.name}} ({{car.year}}):</h2>
+    <form method="post" action="../delete_feature_form">
+        {% csrf_token %}
+        <div class="gallery-item" style="border: 1px solid black;padding: 5px;width: 40%;margin: auto;">
+            <img src="{{feature.photo}}" alt="Foto 2" style="width: 250px;">
+            <p style="font-size: 110%;font-weight: bolder;">{{feature.title}}</p>
+            <p>{{feature.description}}</p>
+        </div>
+        <input type="hidden" name="carname" id="carname" value="{{car.name}}">
+        <input type="hidden" name="feature_id" id="feature_id" value="{{feature.id}}">
+        <div class="form-group">
+            <input type="submit" value="Eliminar" style="background-color: red;">
+          </div>
+    </form>
+    <button onclick="window.location.href = '/edit_feature/{{feature.id}}';">Volver</button>
+    
+  </div>
+</body>
+</html>

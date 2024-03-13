@@ -1,0 +1,45 @@
+.container {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .section {
+    flex: 1 1 100%;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+
+  .half-width {
+    flex: 0 0 50%;
+  }
+
+  .third-width {
+    flex: 0 0 33.33%;
+  }
+
+  .image {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+  }
+
+  .gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  .gallery-item {
+    flex: 0 0 calc(16.66% - 20px); /* 6 columnas en total */
+    margin-bottom: 20px;
+    box-sizing: border-box;
+    text-align: center;
+  }
+
+  .gallery-item img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+  }

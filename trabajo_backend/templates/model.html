@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    {% load static %}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ejemplo de HTML</title>
+  <link rel="stylesheet" href="{% static 'style_model.css' %}">
+</head>
+<body>
+    <a href="/models"><h1>INDEX</h1></a>
+  <div class="container">
+    <!-- Primera parte -->
+    <div class="section half-width">
+      <img src="{{car.photo}}" alt="Foto 1" class="image">
+    </div>
+    <div class="section half-width">
+      <div>
+        <h4>{{car.name}}</h4>
+        <h2>{{car.title_description}}</h2>
+        <p>{{car.description}}</p>
+      </div>
+    </div>
+    <!-- Segunda parte -->
+    <div class="section half-width">
+      <div class="gallery">
+        {% for feature in car_features %}
+        <div class="gallery-item">
+          <img src="{{feature.photo}}" alt="Foto 2" style="width: 250px;">
+          <p style="font-size: 110%;font-weight: bolder;">{{feature.title}}</p>
+          <p>{{feature.description}}</p>
+        </div>
+        {% endfor %}
+        
+        
+      </div>
+    </div>
+    <!-- Tercera parte -->
+
+    
+    
+  </div>
+
+  {% for info in car_infos %}
+  <div class="container">
+
+  <div class="section half-width">
+    <img src="{{info.photo}}" alt="Foto 1" class="image">
+  </div>
+  <div class="section half-width">
+    <div>
+      <h2>{{info.title}}</h2>
+      <p>{{info.description}}</p>
+    </div>
+  </div>
+  
+</div>
+{% endfor %}
+  
+  
+</body>
+</html>

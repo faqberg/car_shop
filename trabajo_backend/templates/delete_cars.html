@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Models</title>
+<link rel="stylesheet" href="{% static 'style_models.css' %}">
+</head>
+<body>
+
+    <h1><a href="/models">INDEX</a><span style="float: right;margin-right: 10px;"><a href="../edit">Edit</a></span></h1>
+    <h1>Selecciona el auto a eliminar: </h1>
+    
+
+<div class="filter-bar">
+    <span>Filtrar por:</span>
+    <button onclick="filterBy('all')">Todos</button>
+    <button onclick="filterBy('car')">Autos</button>
+    <button onclick="filterBy('pickup_com')">Pickups y comerciales</button>
+    <button onclick="filterBy('suv_cross')">SUVs y Crossovers</button>
+    <span style="float: right;">
+        <select id="mySelect" onchange="updateUrl()">
+            <option value="">Ordenar por</option>
+            <option value="none">Sin orden</option>
+            <option value="asc">De menor a mayor precio</option>
+            <option value="desc">De mayor a menor precio</option>
+            <option value="newest">Más nuevos primero</option>
+            <option value="oldest">Más viejos primero</option>
+        </select>
+    </span>
+</div>
+
+<table>
+    {% if order == "none" %}
+    {% for car in cars %}
+        {% if filter == "all" or filter == "none" %}
+            {% if forloop.counter0|divisibleby:4 %}
+                <tr>
+            {% endif %}
+
+            <td>
+                <div class="title">{{ car.name }}</div>
+                <div class="year">{{ car.year }}   |   ${{ car.price }}</div><br>
+                <a href="../delete_car/{{car.name}}"><img src="{{ car.photo }}" alt="{{ car.name }}"></a>
+            </td>
+
+            {% if forloop.counter|divisibleby:4 or forloop.last %}
+                </tr>
+            {% endif %}
+        {% elif car.type == filter %}
+            {% if forloop.counter0|divisibleby:4 %}
+                <tr>
+            {% endif %}
+
+            <td>
+                <div class="title">{{ car.name }}</div>
+                <div class="year">{{ car.year }}   |   ${{ car.price }}</div><br>
+                <a href="../delete_car/{{car.name}}"><img src="{{ car.photo }}" alt="{{ car.name }}"></a>
+            </td>
+
+            {% if forloop.counter|divisibleby:4 or forloop.last %}
+                </tr>
+            {% endif %}
+        {% endif %}
+    {% endfor %}
+{% elif order == "asc" %}
+    {% for car in cars|dictsort:"price" %}
+        {% if filter == "all" or filter == "none" %}
+            {% if forloop.counter0|divisibleby:4 %}
+                <tr>
+            {% endif %}
+
+            <td>
+                <div class="title">{{ car.name }}</div>
+                <div class="year">{{ car.year }}   |   ${{ car.price }}</div><br>
+                <a href="../delete_car/{{car.name}}"><img src="{{ car.photo }}" alt="{{ car.name }}"></a>
+            </td>
+
+            {% if forloop.counter|divisibleby:4 or forloop.last %}
+                </tr>
+            {% endif %}
+        {% elif car.type == filter %}
+            {% if forloop.counter0|divisibleby:4 %}
+                <tr>
+            {% endif %}
+
+            <td>
+                <div class="title">{{ car.name }}</div>
+                <div class="year">{{ car.year }}   |   ${{ car.price }}</div><br>
+                <a href="../delete_car/{{car.name}}"><img src="{{ car.photo }}" alt="{{ car.name }}"></a>
+            </td>
+
+            {% if forloop.counter|divisibleby:4 or forloop.last %}
+                </tr>
+            {% endif %}
+        {% endif %}
+    {% endfor %}
+{% elif order == "desc" %}
+    {% for car in cars|dictsortreversed:"price" %}
+        {% if filter == "all" or filter == "none" %}
+            {% if forloop.counter0|divisibleby:4 %}
+                <tr>
+            {% endif %}
+
+            <td>
+                <div class="title">{{ car.name }}</div>
+                <div class="year">{{ car.year }}   |   ${{ car.price }}</div><br>
+                <a href="../delete_car/{{car.name}}"><img src="{{ car.photo }}" alt="{{ car.name }}"></a>
+            </td>
+
+            {% if forloop.counter|divisibleby:4 or forloop.last %}
+                </tr>
+            {% endif %}
+        {% elif car.type == filter %}
+            {% if forloop.counter0|divisibleby:4 %}
+                <tr>
+            {% endif %}
+
+            <td>
+                <div class="title">{{ car.name }}</div>
+                <div class="year">{{ car.year }}   |   ${{ car.price }}</div><br>
+                <a href="../delete_car/{{car.name}}"><img src="{{ car.photo }}" alt="{{ car.name }}"></a>
+            </td>
+
+            {% if forloop.counter|divisibleby:4 or forloop.last %}
+                </tr>
+            {% endif %}
+        {% endif %}
+    {% endfor %}
+{% elif order == "newest" %}
+    {% for car in cars|dictsortreversed:"year" %}
+        {% if filter == "all" or filter == "none" %}
+            {% if forloop.counter0|divisibleby:4 %}
+                <tr>
+            {% endif %}
+
+            <td>
+                <div class="title">{{ car.name }}</div>
+                <div class="year">{{ car.year }}   |   ${{ car.price }}</div><br>
+                <a href="../delete_car/{{car.name}}"><img src="{{ car.photo }}" alt="{{ car.name }}"></a>
+            </td>
+
+            {% if forloop.counter|divisibleby:4 or forloop.last %}
+                </tr>
+            {% endif %}
+        {% elif car.type == filter %}
+            {% if forloop.counter0|divisibleby:4 %}
+                <tr>
+            {% endif %}
+
+            <td>
+                <div class="title">{{ car.name }}</div>
+                <div class="year">{{ car.year }}   |   ${{ car.price }}</div><br>
+                <a href="../delete_car/{{car.name}}"><img src="{{ car.photo }}" alt="{{ car.name }}"></a>
+            </td>
+
+            {% if forloop.counter|divisibleby:4 or forloop.last %}
+                </tr>
+            {% endif %}
+        {% endif %}
+    {% endfor %}
+{% elif order == "oldest" %}
+    {% for car in cars|dictsort:"year" %}
+        {% if filter == "all" or filter == "none" %}
+            {% if forloop.counter0|divisibleby:4 %}
+                <tr>
+            {% endif %}
+
+            <td>
+                <div class="title">{{ car.name }}</div>
+                <div class="year">{{ car.year }}   |   ${{ car.price }}</div><br>
+                <a href="../delete_car/{{car.name}}"><img src="{{ car.photo }}" alt="{{ car.name }}"></a>
+            </td>
+
+            {% if forloop.counter|divisibleby:4 or forloop.last %}
+                </tr>
+            {% endif %}
+        {% elif car.type == filter %}
+            {% if forloop.counter0|divisibleby:4 %}
+                <tr>
+            {% endif %}
+
+            <td>
+                <div class="title">{{ car.name }}</div>
+                <div class="year">{{ car.year }}   |   ${{ car.price }}</div><br>
+                <a href="../delete_car/{{car.name}}"><img src="{{ car.photo }}" alt="{{ car.name }}"></a>
+            </td>
+
+            {% if forloop.counter|divisibleby:4 or forloop.last %}
+                </tr>
+            {% endif %}
+        {% endif %}
+    {% endfor %}
+{% endif %}
+
+    
+</table>
+
+<script src="{% static 'script_models.js' %}"></script>
+
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    {% load static %}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Links de Acción para Autos</title>
+  <link rel="stylesheet" href="{% static 'style_edit.css' %}">
+</head>
+<body>
+  <div class="container">
+    <a href="/models"><h1>INDEX</h1></a>
+    <h2>Acciones para Autos</h2>
+    <div class="actions">
+      <a href="create_car">Añadir Auto</a>
+      <a href="edit_cars">Editar Auto</a>
+      <a href="delete_cars">Eliminar Auto</a>
+      <a href="edit_features">Editar/Crear/Eliminar Features de Auto</a>
+      <a href="edit_info">Editar/Crear/Eliminar Información de Auto</a>
+    </div>
+  </div>
+</body>
+</html>
