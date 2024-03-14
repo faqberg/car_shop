@@ -17,7 +17,7 @@ python manage.py migrate
    python manage.py runserver
 
 5. Acceder a la API:
-Una vez que el servidor esté en funcionamiento, puedes acceder a la API en http://localhost:8000.
+Una vez que el servidor esté en funcionamiento, puedes acceder a la API en http://127.0.0.1:8000/
 
 ## Documentación de la API
 La ruta /api/cars/ devuelve todos los coches.
