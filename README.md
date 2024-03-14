@@ -19,7 +19,7 @@ python manage.py migrate
 5. Acceder a la API:
 Una vez que el servidor esté en funcionamiento, puedes acceder a la API en http://localhost:8000.
 
-Documentación de la API
+## Documentación de la API
 La ruta /api/cars/ devuelve todos los coches.
 
 Método HTTP: GET
